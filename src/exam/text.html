@@ -1,0 +1,47 @@
+Task: Poker Tournament Simulation
+A poker tournament is simulated in the program Tournamentsimulator, java. Some players participate in the tournament, during which they can win or lose money. The code consists of four classes: TournamentSimulator, here is the main() method, Player, which represents a player, Tournament which represents the tournament, and Evaluator which evaluates the results of the players in the competition.
+The basic structure of the code should not be changed, but it can be supplemented with helper methods and variables.
+
+1 Task (30 points)
+• TournamentSimulator:
+• Call the setup( method in main().
+• Launch the waitForTournament) and the start) methods on a new thread respectively.
+• Using the TOURNAMENT_DURATION_MSEC the program should wait as much time until the tournament is over.
+• When the tournament is over the simulation should stop at most after EVALUATION_DURATION_MSEC time.
+• Player:
+• Implement the waitForTournament) method: a player should until the tournament starts and then calls the participateln Tournament) method.
+• Implement the participateln Tournament() method: a player should wait until the tournament is over.
+• Tournament:
+• Create a data structure to store the participating Players.
+• Implement the start() method; first wait for startTime time then notify the participants the tournament has started. Next, we
+call Player's addParticipationCost) method with the amount of the tournament entry fee. Then wait duration much time and then notify the participating players the tournament is over.
+• Implement the addPlayer) method; The Player that was passed as a parameter to this method should be added to the data structure storing players.
+
+2 Task (10 points)
+• TournamentSimulator:
+• After waiting for TOURNAMENT_DURATION_MSEC, notify the players that the tournament is over.
+• Player:
+• At the end of the participateln Tournament() method, call the evaluate() method.
+• Call the tryEvaluatePlayer() method on a single instance of the Evaluator class. If the call fails (returns false), then wait WAIT_TIME_MSEC and try again. If the evaluation was successful, exit the method.
+3 Task (10 points)
+
+All that remains is the evaluation of the tournament, which is the responsibility of the Evaluator class.
+• Create a data structure for the player register with LIMIT capacity.
+• Let's create a logical variable for the state of the evaluator. This variable tracks when the Evaluator is ready to evaluate a next player.
+• Implement the startEvaluation) method:
+• The variable you just created should initially indicate that the evaluator is ready to evaluate players.
+• Wait WAIT_TIME_MSEC.
+• Write to the standard output that LIMIT number of players are to be evaluated.
+• Set the value of the logical variable to false.
+• Wait for EVALUATION_PREPARATION_TIME_MSEC.
+• If there is no player to be evaluated, exit the loop.
+• If there is, generate a random integer in the interval [-10, 10).
+• If the result is zero, add one.
+• From the players waiting for evaluation, let's take the first one out of the data structure.
+• If the randomly generated number is positive, then write to the standard output that the player's prize is the product of the participation fee multiplied by the randomly generated number.
+• If the received generated number is negative, write down how much the player lost, calculating the amount in the same way.
+• Finally, note that the player has been evaluated.
+• Implement the tryEvaluatePlayer() method.
+• If it is not possible to evaluate new players, write this information to the standard output and return with a false logical value.
+• If a new evaluation is possible, indicate it on the standard output.
+• If the data structure containing the players to be evaluated is already full, then write this message to the standard output and return with false.
